@@ -108,5 +108,30 @@ namespace ReviewUnitTests
                 Assert.Fail($"Unexpected exception of type {ex.GetType()} caught {ex.Message}");
             }
         }
+        [TestMethod]
+        [DataRow(SupervisoryLevel.Owner, 25.2)]
+       // [DataRow("Boss", SupervisoryLevel.Entry, 25.2)]
+        public void Employment_SetSupervisoryLevel_GoodSet(SupervisoryLevel level)
+        {
+            try
+            {
+                //arrange ( setup of data)
+                Employment employment = new Employment("Boss", SupervisoryLevel.DepartmentHead, 3.5);
+
+                //act ( call the method for testing)
+                employment.SetEmploymentResponsibilityLevel(level);
+
+                //assess ( check for success )
+                Assert.IsTrue(employment.Level==level, $"Employment level of {employment.Level} is incorrect, should be {level}." );
+            }
+            catch
+            {
+
+            }
+
+
+
+        }
+
     }
 }
